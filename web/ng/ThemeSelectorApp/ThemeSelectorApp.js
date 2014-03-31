@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    var ThemeSelectorApp = angular.module('ThemeSelectorApp', ['ngCookies']);
+    var ThemeSelectorApp = angular.module('ThemeSelectorApp', []);
     ThemeSelectorApp.run(['$q', '$rootScope',
         function ($q, $rootScope) {
 
@@ -17,15 +17,15 @@
 
     // TODO: replace app with your module name
     angular.module('ThemeSelectorApp').controller(controllerId,
-        ['$scope', '$cookies', ThemeSelectorCtrl]);
+        ['$scope',  ThemeSelectorCtrl]);
 
-    function ThemeSelectorCtrl($scope, $cookies) {
-        var theme = $cookies.theme;
+    function ThemeSelectorCtrl($scope) {
+        var theme = PBDeskJS.CookieUtils.Read('theme');
         if (!theme) {
             theme = 'cerulean';
         }
         $scope.Theme = theme;
-        $cookies.theme = theme;
+        PBDeskJS.CookieUtils.Create('theme', theme);
 
         $scope.Themes = [
             { id: 'amelia', name: 'Amelia', caption: 'Sweet and cheery' },
@@ -40,7 +40,9 @@
 
         $scope.SelectTheme = function (selectedTheme) {
             $scope.Theme = selectedTheme;
-            $cookies.theme = selectedTheme;
+           // $cookies.theme = selectedTheme;
+            PBDeskJS.CookieUtils.Create('theme', selectedTheme);
+            window.location = "/";
         }
 
 

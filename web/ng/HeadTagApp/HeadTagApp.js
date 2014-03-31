@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    var PBDeskHeaderApp = angular.module('HeadTagApp', ['ngCookies']);
+    var PBDeskHeaderApp = angular.module('HeadTagApp', []);
     PBDeskHeaderApp.run(['$q', '$rootScope',
         function ($q, $rootScope) {
 
@@ -14,15 +14,16 @@
 
     // TODO: replace app with your module name
     angular.module('HeadTagApp').controller(controllerId,
-        ['$scope', '$cookies', PBDeskHeaderCtrl]);
+        ['$scope',  PBDeskHeaderCtrl]);
 
-    function PBDeskHeaderCtrl($scope, $cookies) {
-        var theme = $cookies.theme;
+    function PBDeskHeaderCtrl($scope) {
+        var theme = PBDeskJS.CookieUtils.Read('theme'); 
         if (!theme) {
             theme = 'cerulean';
         }
         $scope.Theme = theme;
-        $cookies.theme = theme;
+        //$cookies.theme = theme;
+        PBDeskJS.CookieUtils.Create('theme', theme);
         
 
         
