@@ -58,9 +58,9 @@ angular.element(document).ready(function () {
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> \
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> \
         <![endif]--> \
-        <link ng-href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/{{Theme}}/bootstrap.min.css" rel="stylesheet" id="bootstrap.css.theme"> \
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> \
-        <link href="/assets/css/styles.css">';
+        <link ng-href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/{{Theme}}/bootstrap.min.css" rel="stylesheet" id="bootstrap.css.theme" /> \
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" /> \
+        <link href="/assets/css/styles.css" rel="stylesheet" />';
 
 
     
