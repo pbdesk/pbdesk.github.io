@@ -1,5 +1,4 @@
-﻿/// <reference path="../../PBDeskGHApp.js" />
-var PBDeskGHAppName = 'PBDeskGHApp';
+﻿
 (function () {
     'use strict';
 

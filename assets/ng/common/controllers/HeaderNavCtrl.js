@@ -1,15 +1,15 @@
-﻿var PBDeskGHAppName = 'PBDeskGHApp';
+﻿
 
 (function () {
     'use strict';
 
     var controllerId = 'HeaderNavCtrl';
     angular.module(PBDeskGHAppName).controller(controllerId,
-        ['$scope', '$location', HeaderNavCtrl]);
+        ['$scope', '$location', 'Sitemap', HeaderNavCtrl]);
 
-    function HeaderNavCtrl($scope, $location) {
+    function HeaderNavCtrl($scope, $location, Sitemap) {
         $scope.MainMenu = '';
-        $scope.PageTitle = 'PBDesk - from the desk of Pinal Bhatt!';
+        $scope.Sitemap = Sitemap;
         var absurl = $location.absUrl().toLowerCase();
         if (absurl.indexOf('/elearning/') != -1) {
             $scope.MainMenu = "elearning";

@@ -17,39 +17,68 @@
 
         }]);
 
-    PBDeskGHApp.constant('AppConfigs',
-        {
-            Sitemap :
-                {
-                    Root:
-                        {
-                            id: 'Home',
-                            url: '/',
-                            title: 'Welcome'
+    
 
-                        }
+    PBDeskGHApp.constant('Sitemap',
+        {
+            Root:
+                {
+                    id: 'home',
+                    url: '/',
+                    pgTitle: 'Welcome',
+                    caption: 'PBDesk',
+                    faIcon: 'home',
+                    ngFolder:  'home',
+                    controller: 'HomeController',
+                    view:  'home.html'
+                },
+            TechNews:
+                {
+                    id: 'technews',
+                    url: '/TechNews',
+                    pgTitle: 'TechNews',
+                    caption: 'TechNews',
+                    faIcon: 'info',
+                    ngFolder: 'news',
+                    controller: 'NewsController',
+                    view: 'news.html'
+                },
+            Articles:
+                {
+                    id: 'articles',
+                    url: '/Articles',
+                    pgTitle: 'Articles',
+                    caption: 'Articles',
+                    faIcon: 'file-text',
+                    ngFolder: 'articles',
+                    controller: 'ArticlesController',
+                    view: 'articles.html'
                 }
 
         });
 
-    PBDeskGHApp.config(['$routeProvider', function ($routeProvider) {
-        var ngPath = '/ng/';
+    PBDeskGHApp.config(['$routeProvider', 'Sitemap', function ($routeProvider, Sitemap) {
+
         $routeProvider
-            .when('/', { controller: 'MDataHomeController', templateUrl: viewPath + 'index.html' })
+            .when(Sitemap.Root.url, { controller: Sitemap.Root.controller, templateUrl: NGViewPath(Sitemap.Root) })
 
-            .when('/Locales', { controller: 'LocalesController', templateUrl: viewPath + 'locales/list.html' })
-            .when('/Locales/Create', { controller: 'LocalesController', templateUrl: viewPath + 'locales/edit.html' })
-            .when('/Locales/Edit/:Id', { controller: 'LocalesController', templateUrl: viewPath + 'locales/edit.html' })
+            .when(Sitemap.TechNews.url, { controller: Sitemap.TechNews.controller, templateUrl: NGViewPath(Sitemap.TechNews), caseInsensitiveMatch: true })
+            //.when('/Locales/Create', { controller: 'LocalesController', templateUrl: viewPath + 'locales/edit.html' })
+            //.when('/Locales/Edit/:Id', { controller: 'LocalesController', templateUrl: viewPath + 'locales/edit.html' })
 
-            .when('/Builds', { controller: 'BuildsController', templateUrl: viewPath + 'builds/list.html' })
-            .when('/Builds/Create', { controller: 'BuildsController', templateUrl: viewPath + 'builds/edit.html' })
-            .when('/Builds/Edit/:Id', { controller: 'BuildsController', templateUrl: viewPath + 'builds/edit.html' })
+            .when(Sitemap.Articles.url, { controller: Sitemap.Articles.controller, templateUrl: NGViewPath(Sitemap.Articles), caseInsensitiveMatch: true })
+            //.when('/Builds/Create', { controller: 'BuildsController', templateUrl: viewPath + 'builds/edit.html' })
+            //.when('/Builds/Edit/:Id', { controller: 'BuildsController', templateUrl: viewPath + 'builds/edit.html' })
 
-            .when('/Projects', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/list.html' })
-            .when('/Projects/Create', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
-            .when('/Projects/Edit/:Id', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
+            //.when('/Projects', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/list.html' })
+            //.when('/Projects/Create', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
+            //.when('/Projects/Edit/:Id', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
 
             .otherwise({ redirectTo: '/' });
 
     }]);
+
+    function NGViewPath(node) {
+        return '/assets/ng/' + node.ngFolder + '/' + node.view;
+    }
 })();
