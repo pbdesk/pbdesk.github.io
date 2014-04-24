@@ -14,7 +14,11 @@
     // TODO: inject services as needed.
     PBDeskGHApp.run(['$q', '$rootScope',
         function ($q, $rootScope) {
-
+            $rootScope.SetActiveNav = function(navId){
+                var currentNavItem = '#navItem' + navId;
+                $('[id^=navItem]').removeClass('active');
+                $('#navItem' + navId).addClass('active');
+            }
         }]);
 
     
@@ -53,6 +57,60 @@
                     ngFolder: 'articles',
                     controller: 'ArticlesController',
                     view: 'articles.html'
+                },
+            eLearning:
+                {
+                    id: 'elearning',
+                    url: '/eLearning',
+                    pgTitle: 'eLearning',
+                    caption: 'eLearning',
+                    faIcon: 'laptop',
+                    ngFolder: 'eLearning',
+                    controller: 'eLearningController',
+                    view: 'elearning.html',
+
+                    eBooks: {
+                        id: 'ebooks',
+                        url: '/eLearning/eBooks',
+                        pgTitle: 'eBooks',
+                        caption: 'eBooks',
+                        faIcon: 'book',
+                        ngFolder: 'eBooks',
+                        controller: 'eBooksController',
+                        view: 'ebooks.html'
+                    },
+                    Tutorials: {
+                        id: 'elearning',
+                        url: '/eLearning/Tutorials',
+                        pgTitle: 'Tutorials',
+                        caption: 'Tutorials',
+                        faIcon: 'laptop',
+                        ngFolder: 'Tutorials',
+                        controller: 'TutorialsController',
+                        view: 'tutorials.html'
+                    },
+                    Videos: {
+                        id: 'elearning',
+                        url: '/eLearning',
+                        pgTitle: 'eLearning',
+                        caption: 'Videos',
+                        faIcon: 'film',
+                        ngFolder: 'eLearning',
+                        controller: 'eLearningController',
+                        view: 'elearning.html'
+                    },
+                    FlashCards: {
+                        id: 'elearning',
+                        url: '/eLearning',
+                        pgTitle: 'eLearning',
+                        caption: 'Flash Cards',
+                        faIcon: 'tablet',
+                        ngFolder: 'eLearning',
+                        controller: 'eLearningController',
+                        view: 'elearning.html'
+                    }
+
+
                 }
 
         });
@@ -70,8 +128,9 @@
             //.when('/Builds/Create', { controller: 'BuildsController', templateUrl: viewPath + 'builds/edit.html' })
             //.when('/Builds/Edit/:Id', { controller: 'BuildsController', templateUrl: viewPath + 'builds/edit.html' })
 
-            //.when('/Projects', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/list.html' })
-            //.when('/Projects/Create', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
+            .when(Sitemap.eLearning.url, { controller: Sitemap.eLearning.controller, templateUrl: NGViewPath(Sitemap.eLearning), caseInsensitiveMatch: true })
+            .when(Sitemap.eLearning.eBooks.url, { controller: Sitemap.eLearning.eBooks.controller, templateUrl: NGViewPath(Sitemap.eLearning.eBooks), caseInsensitiveMatch: true })
+            .when(Sitemap.eLearning.Tutorials.url, { controller: Sitemap.eLearning.Tutorials.controller, templateUrl: NGViewPath(Sitemap.eLearning.Tutorials), caseInsensitiveMatch: true })
             //.when('/Projects/Edit/:Id', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
 
             .otherwise({ redirectTo: '/' });

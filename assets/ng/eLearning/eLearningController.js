@@ -1,14 +1,14 @@
 ﻿(function () {
     'use strict';
 
-    var controllerId = 'ArticlesController';
+    var controllerId = 'eLearningController';
 
     // TODO: replace app with your module name
     angular.module(PBDeskGHAppName).controller(controllerId,
-        ['$scope', '$rootScope', 'Sitemap', ArticlesController]);
+        ['$scope', '$rootScope', 'Sitemap', eLearningController]);
 
-    function ArticlesController($scope, $rootScope,Sitemap) {
-        var sitemapNode = Sitemap.Articles;
+    function eLearningController($scope, $rootScope, Sitemap) {
+        var sitemapNode = Sitemap.eLearning;
         $scope.$on('$routeChangeSuccess', function () {
             $rootScope.SetActiveNav(sitemapNode.id);
         });

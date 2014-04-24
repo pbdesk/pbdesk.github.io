@@ -14,5 +14,9 @@
         $scope.activate = activate;
 
         function activate() { }
+
+        $scope.$on('$routeChangeSuccess', function () {
+            $('[id^=navItem]').removeClass('active');
+        });
     }
 })();

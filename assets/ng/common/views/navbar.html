@@ -12,17 +12,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a id="navItem{{Sitemap.TechNews.id}}" href="#{{Sitemap.TechNews.url}}"><i class="fa fa-{{Sitemap.TechNews.faIcon}}"></i> {{Sitemap.TechNews.caption}}</a></li>
-                    <li><a id="navItem{{Sitemap.Articles.id}}" href="#{{Sitemap.Articles.url}}"><i class="fa fa-{{Sitemap.Articles.faIcon}}"></i> {{Sitemap.Articles.caption}}</a></li>
+                    <li id="navItem{{Sitemap.TechNews.id}}"><a href="#{{Sitemap.TechNews.url}}"><i class="fa fa-{{Sitemap.TechNews.faIcon}}"></i> {{Sitemap.TechNews.caption}}</a></li>
+                    <li id="navItem{{Sitemap.Articles.id}}"><a href="#{{Sitemap.Articles.url}}"><i class="fa fa-{{Sitemap.Articles.faIcon}}"></i> {{Sitemap.Articles.caption}}</a></li>
                     <li><a href="#contact"><i class="fa fa-lightbulb-o"></i> Spotlight</a></li>
                     <li><a href="#contact"><i class="fa fa-desktop"></i> Showcase</a></li>
-                    <li ng-class="{dropdown: true, active: MainMenu === 'elearning'}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-laptop"></i> eLearning<b class="caret"></b></a>
+                    <li id="navItem{{Sitemap.eLearning.id}}" class="dropdown" >
+                        <!--ng-class="{dropdown: true, active: MainMenu === 'elearning'}"-->
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-{{Sitemap.eLearning.faIcon}}"></i> {{Sitemap.eLearning.caption}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">eBooks</a></li>
-                            <li><a href="#">Tutorials</a></li>
-                            <li><a href="#">Videos</a></li>
-                            <li><a href="#">Flash Cards</a></li>
+                            <li><a href="#{{Sitemap.eLearning.eBooks.url}}"><i class="fa fa-{{Sitemap.eLearning.eBooks.faIcon}}"></i> {{Sitemap.eLearning.eBooks.caption}}</a></li>
+                            <li><a href="#{{Sitemap.eLearning.Tutorials.url}}"><i class="fa fa-{{Sitemap.eLearning.Tutorials.faIcon}}"></i> {{Sitemap.eLearning.Tutorials.caption}}</a></a></li>
+                            <li><a href="#"><i class="fa fa-{{Sitemap.eLearning.Videos.faIcon}}"></i> {{Sitemap.eLearning.Videos.caption}}</a></a></li>
+                            <li><a href="#"><i class="fa fa-{{Sitemap.eLearning.FlashCards.faIcon}}"></i> {{Sitemap.eLearning.FlashCards.caption}}</a></a></li>
                         </ul>
                     </li>
                     <li><a href="#contact"><i class="fa fa-bold"></i> Blogs</a></li>
