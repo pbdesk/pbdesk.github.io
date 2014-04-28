@@ -9,6 +9,10 @@
 
     function eLearningController($scope, $rootScope, Sitemap) {
         var sitemapNode = Sitemap.eLearning;
+
+        $scope.SitemapNode = Sitemap.eLearning;
+
+
         $scope.$on('$routeChangeSuccess', function () {
             $rootScope.SetActiveNav(sitemapNode.id);
         });
