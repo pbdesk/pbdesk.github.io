@@ -1,4 +1,6 @@
-﻿var PBDeskGHAppName = 'PBDeskGHApp';
+﻿/// <reference path="../js/PBDeskUtils.js" />
+
+var PBDeskGHAppName = 'PBDeskGHApp';
 (function () {
     'use strict';
 
@@ -6,7 +8,8 @@
 
     // TODO: Inject modules as needed.
     var PBDeskGHApp = angular.module('PBDeskGHApp', [
-        'ngAnimate', 'ngRoute', 'ngResource'
+        'ngAnimate', 'ngRoute', 'ngResource', 'ngSanitize',
+        'ui.bootstrap', 'jmdobry.angular-cache'
         
     ]);
 
@@ -14,10 +17,14 @@
     // TODO: inject services as needed.
     PBDeskGHApp.run(['$q', '$rootScope',
         function ($q, $rootScope) {
-            $rootScope.SetActiveNav = function(navId){
+            $rootScope.SetActiveNav = function (navId) {
                 var currentNavItem = '#navItem' + navId;
                 $('[id^=navItem]').removeClass('active');
                 $('#navItem' + navId).addClass('active');
+            };
+
+            $rootScope.SetPgTitle = function (ttl) {
+                document.title = PBDeskJS.StrUtils.Format("PBDesk - {0} | from the desk of Pinal Bhatt!", ttl);
             }
         }]);
 
@@ -64,6 +71,7 @@
                     url: '/eLearning',
                     pgTitle: 'eLearning',
                     caption: 'eLearning',
+                    abstract: 'Blended Learning Pathway',
                     faIcon: 'laptop',
                     ngFolder: 'eLearning',
                     controller: 'eLearningController',
@@ -74,7 +82,7 @@
                         url: '/eLearning/eBooks',
                         pgTitle: 'eBooks',
                         caption: 'eBooks',
-                        abstract: 'some abstract for eBooks can go here',
+                        abstract: 'one of the basic source of Knowledge now in digital formats called "eBooks"',
                         faIcon: 'book',
                         ngFolder: 'eBooks',
                         controller: 'eBooksController',
@@ -85,7 +93,7 @@
                         url: '/eLearning/Tutorials',
                         pgTitle: 'Tutorials',
                         caption: 'Tutorials',
-                        abstract: 'some abstract for eBooks can go here',
+                        abstract: 'Free online tutorials and videos for self learning technology concepts.',
                         faIcon: 'laptop',
                         ngFolder: 'Tutorials',
                         controller: 'TutorialsController',
@@ -96,7 +104,7 @@
                         url: '/eLearning',
                         pgTitle: 'eLearning',
                         caption: 'Videos',
-                        abstract: 'some abstract for eBooks can go here',
+                        abstract: 'Free Videos and Presentations on verious technology topics.',
                         faIcon: 'film',
                         ngFolder: 'eLearning',
                         controller: 'eLearningController',
@@ -107,7 +115,7 @@
                         url: '/eLearning',
                         pgTitle: 'eLearning',
                         caption: 'Flash Cards',
-                        abstract: 'some abstract for eBooks can go here',
+                        abstract: 'Learn verious technology conecpts, topic by topic - one card at a time, with our Flash Cards!',
                         faIcon: 'tablet',
                         ngFolder: 'eLearning',
                         controller: 'eLearningController',

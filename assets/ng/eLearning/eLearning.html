@@ -1,5 +1,5 @@
-﻿<div class="container">
-    <br/>
+﻿
+    <ng-include src="'/assets/ng/common/views/pgheader.html'"></ng-include>
     <div class="row">
         <div class="col-lg-3">
             <div class="alert alert-warning">
@@ -28,43 +28,41 @@
         </div>
     </div>
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Featured eBooks</h3>
-        </div>
-        <div class="panel-body">
-            <br/><br /><br />
-        </div>
-        <div class="panel-footer">&nbsp;</div>
-    </div>
-
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Featured eBooks</h3>
-        </div>
-        <div class="panel-body">
-            <br /><br /><br />
-        </div>
-        <div class="panel-footer">&nbsp;</div>
-    </div>
-
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Featured eBooks</h3>
-        </div>
-        <div class="panel-body">
-            <br /><br /><br />
-        </div>
-        <div class="panel-footer">&nbsp;</div>
-    </div>
-
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Featured eBooks</h3>
-        </div>
-        <div class="panel-body">
-            <br /><br /><br />
-        </div>
-        <div class="panel-footer">&nbsp;</div>
-    </div>
-</div>
+    <!--<accordion close-others="OneAtATime">
+        <accordion-group ng-repeat="group in AccordionGroups" is-open="isopen{{$index}}">
+            <accordion-heading>
+                <i class="pull-left fa" ng-class="{'fa-chevron-down': isopen{{$index}}, 'fa-chevron-right': !isopen{{$index}}}"></i>  {{group.title}}
+            </accordion-heading>
+            <div ng-bind-html="group.content"></div>
+        </accordion-group>
+    </accordion>-->
+    <accordion close-others="OneAtATime">
+        <accordion-group is-open="isopen0">
+            <accordion-heading>
+                <i class="pull-left fa" ng-class="{'fa-chevron-down': isopen0, 'fa-chevron-right': !isopen0}"></i>
+                Featured eBooks
+            </accordion-heading>
+            <ng-include src="'/assets/ng/eBooks/featured.html'"></ng-include>
+        </accordion-group>
+        <accordion-group is-open="isopen1">
+            <accordion-heading>
+                <i class="pull-left fa" ng-class="{'fa-chevron-down': isopen1, 'fa-chevron-right': !isopen1}"></i>
+                Featured Tutorials
+            </accordion-heading>
+            <ng-include src="'/assets/ng/eBooks/featured.html'"></ng-include>
+        </accordion-group>
+        <accordion-group is-open="isopen2">
+            <accordion-heading>
+                <i class="pull-left fa" ng-class="{'fa-chevron-down': isopen2, 'fa-chevron-right': !isopen2}"></i>
+                Featured Videos
+            </accordion-heading>
+            <ng-include src="'/assets/ng/eBooks/featured.html'"></ng-include>
+        </accordion-group>
+        <accordion-group is-open="isopen3">
+            <accordion-heading>
+                <i class="pull-left fa" ng-class="{'fa-chevron-down': isopen3, 'fa-chevron-right': !isopen3}"></i>
+                Featured Flash Card Decks
+            </accordion-heading>
+            <ng-include src="'/assets/ng/eBooks/featured.html'"></ng-include>
+        </accordion-group>
+    </accordion>

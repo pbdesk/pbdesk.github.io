@@ -4,9 +4,9 @@
 
     var controllerId = 'HeadTagCtrl';
     angular.module(PBDeskGHAppName).controller(controllerId,
-        ['$scope', '$rootScope', '$location', PBDeskHeaderCtrl]);
+        ['$scope', '$rootScope', '$location', 'Sitemap', PBDeskHeaderCtrl]);
 
-    function PBDeskHeaderCtrl($scope, $rootScope, $location) {
+    function PBDeskHeaderCtrl($scope, $rootScope, $location, Sitemap) {
         var theme = PBDeskJS.CookieUtils.Read('theme'); 
         if (!theme) {
             theme = 'cerulean';
@@ -18,10 +18,13 @@
         $scope.PageTitle = 'Welcome';
         $scope.MetaDesc = '';
         $scope.MetaKeywords = '';
-        var absurl = $location.absUrl().toLowerCase();
-        if (absurl.indexOf('/elearning/') != -1) {
-            $scope.PageTitle = "PBDesk - eLearning";
-        }
+        //var absurl = $location.absUrl().toLowerCase();
+        //if (absurl.indexOf('/elearning') != -1) {
+        //    $scope.PageTitle = Sitemap.eLearning.pgTitle;
+        //    if (absurl.indexOf('/ebooks') != -1) {
+        //        $scope.PageTitle += " " + Sitemap.eLearning.eBooks.pgTitle
+        //    }
+        //}
         
         
 
