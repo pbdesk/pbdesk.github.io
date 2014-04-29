@@ -75,7 +75,7 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     faIcon: 'laptop',
                     ngFolder: 'eLearning',
                     controller: 'eLearningController',
-                    view: 'elearning.html',
+                    view: 'eLearning.html',
 
                     eBooks: {
                         id: 'ebooks',
