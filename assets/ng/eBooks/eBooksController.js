@@ -12,6 +12,7 @@
         $rootScope.SetActiveNav(sitemapNode.id);
         var sitemapSubNode = Sitemap.eLearning.eBooks;
         $rootScope.SetPgTitle(sitemapSubNode.pgTitle);
+        $scope.SitemapNode = Sitemap.eLearning.eBooks;
         
         $scope.$on('$routeChangeSuccess', function () {
             $rootScope.SetActiveNav(sitemapNode.id);
