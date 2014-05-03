@@ -16,8 +16,8 @@ var PBDeskGHAppName = 'PBDeskGHApp';
 
     // Execute bootstrapping code and any dependencies.
     // TODO: inject services as needed.
-    PBDeskGHApp.run(['$q', '$rootScope',
-        function ($q, $rootScope) {
+    PBDeskGHApp.run(['$q', '$rootScope', '$location', 'Sitemap',
+    function ($q, $rootScope, $location, Sitemap) {
             $rootScope.SetActiveNav = function (navId) {
                 var currentNavItem = '#navItem' + navId;
                 $('[id^=navItem]').removeClass('active');
@@ -26,6 +26,24 @@ var PBDeskGHAppName = 'PBDeskGHApp';
 
             $rootScope.SetPgTitle = function (ttl) {
                 document.title = PBDeskJS.StrUtils.Format("PBDesk - {0} | from the desk of Pinal Bhatt!", ttl);
+            }
+
+            $rootScope.GetBreadcrumb = function(){
+                var url = $location.url();
+                var items = url.split("/");
+                var crumbs = [];
+                if (items.length > 0) {
+                    $.each(items, function (index, value) {
+                        if (value === '') {
+                            crumbs[index] = Sitemap["Root"];
+                        }
+                        else {
+                            crumbs[index] = Sitemap[value];
+                        }
+                    });
+                }
+                
+                return crumbs;
             }
         }]);
 
