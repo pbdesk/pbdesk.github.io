@@ -8,8 +8,9 @@ var PBDeskGHAppName = 'PBDeskGHApp';
 
     // TODO: Inject modules as needed.
     var PBDeskGHApp = angular.module('PBDeskGHApp', [
-        'ngAnimate', 'ngRoute', 'ngResource', 'ngSanitize',
-        'ui.bootstrap', 'jmdobry.angular-cache'
+        'ngAnimate', 'ngRoute', 'ngResource', 'ngSanitize',   //Angular Apps
+        'ui.bootstrap', 'jmdobry.angular-cache',            // 3rd Party Apps
+        'GoogleFeedsApp', 'DataSvcApp', 'PBDeskHelperApp'                                          // PBDesk Supporting Apps
         
     ]);
 
