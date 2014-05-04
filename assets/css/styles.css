@@ -62,6 +62,32 @@ padding: 0 2px;
 }
 /* Footer Styles - End*/
 
+/*Sitemap - Start*/
+.psitemap {
+  /* dropdown in accordion */ 
+
+}
+.psitemap .accordion-heading {
+    position: relative; }
+.psitemap .accordion-heading .edit {
+      position: absolute;
+      top: 8px;
+      right: 30px; }
+.psitemap .psitemapL0 {
+    border-left: 4px solid #f38787; }
+.psitemap .psitemapL1 {
+    border-left: 4px solid #65c465; }
+.psitemap .psitemapL2 {
+    border-left: 4px solid #98b3fa; }
+.psitemap .collapse.in {
+    overflow: visible; }
+.psitemap .accordion-inner {
+    padding: 9px 15px;
+    border-top: 1px solid #e5e5e5;
+}
+/*Sitemap - End*/
+
+
 
 
 
