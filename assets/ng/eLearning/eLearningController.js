@@ -8,31 +8,26 @@
         ['$scope', '$rootScope', 'Sitemap', eLearningController]);
 
     function eLearningController($scope, $rootScope, Sitemap) {
-        var sitemapNode = Sitemap.eLearning;
-        $rootScope.SetPgTitle(sitemapNode.pgTitle);
         $scope.SitemapNode = Sitemap.eLearning;
-        $scope.OneAtATime = false;
-        $scope.AccordionGroups = [
-            {
-                title: "Featured eBooks",
-                content: "<ng-include src=\"'/assets/ng/eBooks/featured.html'\"></ng-include>"
-            },
-            {
-                title: "Featured Courses",
-                content: "Dynamic Group Body - 1"
-            },
-            {
-                title: "Featured Videos",
-                content: "Dynamic Group Body - 1"
-            },
-            {
-                title: "Featured Flash Card Decks",
-                content: "Dynamic Group Body - 1"
+        $scope.SitemapNodeParent = $rootScope.GetSitemapNodeParent($scope.SitemapNode);
+        $scope.SitemapNodeChildren = $rootScope.GetSitemapNodeChildren($scope.SitemapNode);
+        $rootScope.SetActiveNav($scope.SitemapNode.id);
+        $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
+
+        $.each($scope.SitemapNodeChildren, function (index, value) {
+            switch (index) {
+                case 0: { $scope.SitemapNodeChildren[index].colorcode = 'warning'; break; }
+                case 1: { $scope.SitemapNodeChildren[index].colorcode = 'danger'; break; }
+                case 2: { $scope.SitemapNodeChildren[index].colorcode = 'success'; break; }
+                case 3: { $scope.SitemapNodeChildren[index].colorcode = 'info'; break; }
+                default: { $scope.SitemapNodeChildren[index].colorcode = 'success'; break; }
             }
-        ];
+            
+        });
+
 
         $scope.$on('$routeChangeSuccess', function () {
-            $rootScope.SetActiveNav(sitemapNode.id);
+            $rootScope.SetActiveNav($scope.SitemapNode.id);
         });
 
         

@@ -1,7 +1,14 @@
 ﻿
     <ng-include src="'/assets/ng/common/views/pgheader.html'"></ng-include>
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3" ng-repeat="subItem in SitemapNodeChildren">
+            <div class="alert alert-{{subItem.colorcode}}">
+                <div class="pull-left" style="padding-right:10px"><a ng-href="#{{subItem.url}}" class="alert-link"><i class="fa fa-{{subItem.faIcon}} fa-3x"></i></a></div>
+                <a ng-href="#{{subItem.url}}" class="alert-link"><strong>{{subItem.caption}}</strong></a> {{subItem.abstract}}
+            </div>
+        </div>
+
+        <!--<div class="col-lg-3">
             <div class="alert alert-warning">
                 <div class="pull-left" style="padding-right:10px"><a ng-href="#{{SitemapNode.eBooks.url}}" class="alert-link"><i class="fa fa-{{SitemapNode.eBooks.faIcon}} fa-3x"></i></a></div>
                 <a ng-href="#{{SitemapNode.eBooks.url}}" class="alert-link"><strong>{{SitemapNode.eBooks.caption}}</strong></a> {{SitemapNode.eBooks.abstract}}
@@ -25,7 +32,7 @@
                 <div class="pull-left" style="padding-right:10px"><a ng-href="#{{SitemapNode.FlashCards.url}}" class="alert-link"><i class="fa fa-{{SitemapNode.FlashCards.faIcon}} fa-3x"></i></a></div>
                 <a ng-href="#{{SitemapNode.FlashCards.url}}" class="alert-link"><strong>{{SitemapNode.FlashCards.caption}}</strong></a> {{SitemapNode.FlashCards.abstract}}
             </div>
-        </div>
+        </div>-->
     </div>
 
     <!--<accordion close-others="OneAtATime">

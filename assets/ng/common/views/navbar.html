@@ -20,10 +20,7 @@
                         <!--ng-class="{dropdown: true, active: MainMenu === 'elearning'}"-->
                         <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-{{Sitemap.eLearning.faIcon}}"></i> {{Sitemap.eLearning.caption}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#{{Sitemap.eLearning.eBooks.url}}"><i class="fa fa-{{Sitemap.eLearning.eBooks.faIcon}}"></i> {{Sitemap.eLearning.eBooks.caption}}</a></li>
-                            <li><a href="#{{Sitemap.eLearning.Tutorials.url}}"><i class="fa fa-{{Sitemap.eLearning.Tutorials.faIcon}}"></i> {{Sitemap.eLearning.Tutorials.caption}}</a></a></li>
-                            <li><a href="#"><i class="fa fa-{{Sitemap.eLearning.Videos.faIcon}}"></i> {{Sitemap.eLearning.Videos.caption}}</a></a></li>
-                            <li><a href="#"><i class="fa fa-{{Sitemap.eLearning.FlashCards.faIcon}}"></i> {{Sitemap.eLearning.FlashCards.caption}}</a></a></li>
+                            <li ng-repeat="navItem in Sitemap.eLearning.children"><a href="#{{Sitemap[navItem].url}}"><i class="fa fa-{{Sitemap[navItem].faIcon}}"></i> {{Sitemap[navItem].caption}}</a></li>
                         </ul>
                     </li>
                     <li><a href="#contact"><i class="fa fa-bold"></i> Blogs</a></li>
