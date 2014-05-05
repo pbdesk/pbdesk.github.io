@@ -1,14 +1,14 @@
 ﻿(function () {
     'use strict';
 
-    var controllerId = 'TutorialsController';
+    var controllerId = 'FeaturedTutorialsController';
 
     // TODO: replace app with your module name
     angular.module(PBDeskGHAppName).controller(controllerId,
-        ['$scope', '$rootScope', 'Sitemap', 'DSFactory', TutorialsController]);
+        ['$scope', '$rootScope', 'Sitemap', 'DSFactory', FeaturedTutorialsController]);
 
-    function TutorialsController($scope, $rootScope, Sitemap, DSFactory) {
-        $scope.SitemapNode = Sitemap.Tutorials;
+    function FeaturedTutorialsController($scope, $rootScope, Sitemap, DSFactory) {
+        $scope.SitemapNode = Sitemap.Tutorials_Featured;
         $scope.SitemapNodeParent = $rootScope.GetSitemapNodeParent($scope.SitemapNode)
         $rootScope.SetActiveNav($scope.SitemapNodeParent.id);
         $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);

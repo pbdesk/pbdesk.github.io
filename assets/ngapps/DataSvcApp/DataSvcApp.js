@@ -31,8 +31,11 @@
 
 
         var PBDeskCache = $angularCacheFactory('PBDeskCache', {
-            capacity: 100,
-            deleteOnExpire: 'aggressive'
+            capacity: 10,
+            deleteOnExpire: 'aggressive',
+            maxAge: 3600000,
+            cacheFlushInterval: 3600000,
+            storageMode: 'localStorage'
 
         });
         var CacheKey = "pbdeskApi/"

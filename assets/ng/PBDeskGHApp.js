@@ -162,7 +162,7 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                 },
             Tutorials: 
                 {
-                    id: 'elearning',
+                    id: 'tutorials',
                     url: '/eLearning/Tutorials',
                     pgTitle: 'Tutorials',
                     caption: 'Tutorials',
@@ -171,8 +171,22 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     ngFolder: 'Tutorials',
                     controller: 'TutorialsController',
                     view: 'tutorials.html',
-                    children: [],
+                    children: ['Tutorials_Featured'],
                     parent: 'eLearning'
+                },
+            Tutorials_Featured:
+                {
+                    id: 'tutorials_featured',
+                    url: '/eLearning/Tutorials/Featured',
+                    pgTitle: 'Featured Tutorials',
+                    caption: 'Featured Tutorials',
+                    abstract: 'Free online tutorials and videos for self learning technology concepts.',
+                    faIcon: 'bookmark-o',
+                    ngFolder: 'Tutorials',
+                    controller: 'FeaturedTutorialsController',
+                    view: 'featured.html',
+                    children: [],
+                    parent: 'Tutorials'
                 },
             Videos: 
                 {
