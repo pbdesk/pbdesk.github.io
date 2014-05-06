@@ -1,7 +1,7 @@
 ﻿<!--Depends on $scope.Crumbs--> 
 <ol class="breadcrumb" style="margin-top:-20px">
-    <li ng-repeat="crumb in Crumbs"><a ng-href="#{{crumb.url}}"><i class="fa fa-{{crumb.faIcon}}"></i> {{crumb.caption}}</a></li>
-    <!--<li><a href="#">Library</a></li>
-    <li class="active">Data</li>-->
+    <li ng-repeat="crumb in Crumbs">
+        <a ng-href="#{{crumb.url}}"><i class="fa fa-{{crumb.faIcon}}"></i> {{crumb.crumbText}}</a>
+    </li>
 </ol>
 

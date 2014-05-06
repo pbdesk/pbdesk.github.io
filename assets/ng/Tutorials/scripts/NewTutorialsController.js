@@ -1,16 +1,16 @@
 ﻿(function () {
     'use strict';
 
-    var controllerId = 'FeaturedTutorialsController';
+    var controllerId = 'NewTutorialsController';
 
     // TODO: replace app with your module name
     angular.module(PBDeskGHAppName).controller(controllerId,
-        ['$scope', '$rootScope', 'Sitemap', 'DSFactory', FeaturedTutorialsController]);
+        ['$scope', '$rootScope', 'Sitemap', 'DSFactory', NewTutorialsController]);
 
-    function FeaturedTutorialsController($scope, $rootScope, Sitemap, DSFactory) {
-        $scope.SitemapNode = Sitemap.Tutorials_Featured;
-        $scope.SitemapNodeParent = $rootScope.GetSitemapNodeParent($scope.SitemapNode)
-        $rootScope.SetActiveNav($scope.SitemapNodeParent.id);
+    function NewTutorialsController($scope, $rootScope, Sitemap, DSFactory) {
+        $scope.SitemapNode = Sitemap.Tutorials_New;
+        $scope.SitemapBaseNode = $rootScope.GetSitemapBaseNode($scope.SitemapNode)
+        $rootScope.SetActiveNav($scope.SitemapBaseNode.id);
         $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
 
         $scope.FeaturedCourses = {};
@@ -31,7 +31,7 @@
 
 
         $scope.$on('$routeChangeSuccess', function () {
-            $rootScope.SetActiveNav($scope.SitemapNodeParent.id);
+            $rootScope.SetActiveNav($scope.SitemapBaseNode.id);
         });
     }
 })();

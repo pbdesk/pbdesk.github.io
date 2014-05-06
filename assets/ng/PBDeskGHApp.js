@@ -27,6 +27,20 @@ var PBDeskGHAppName = 'PBDeskGHApp';
             return parent;
         }
 
+        $rootScope.GetSitemapBaseNode = function (currentNode) {
+            var parent = null;
+            var current = currentNode;
+            if (current != null) {
+                while (current.parent !== 'Root') {
+                    current = Sitemap[current.parent]
+                }
+                if (current != null && current.parent === 'Root') {
+                    parent = current;
+                }
+            }
+            return parent;
+        }
+
         $rootScope.GetSitemapNodeChildren = function (currentNode) {
             var children = [];
             var counter = 0;
@@ -101,7 +115,8 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     id: 'home',
                     url: '/',
                     pgTitle: 'Welcome',
-                    caption: 'PBDesk',
+                    heading: 'PBDesk',
+                    crumbText: 'Home',
                     faIcon: 'home',
                     ngFolder:  'home',
                     controller: 'HomeController',
@@ -113,7 +128,8 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     id: 'technews',
                     url: '/TechNews',
                     pgTitle: 'TechNews',
-                    caption: 'TechNews',
+                    heading: 'TechNews',
+                    crumbText: 'TechNews',
                     faIcon: 'info',
                     ngFolder: 'news',
                     controller: 'NewsController',
@@ -124,7 +140,8 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     id: 'articles',
                     url: '/Articles',
                     pgTitle: 'Articles',
-                    caption: 'Articles',
+                    heading: 'Articles',
+                    crumbText: 'Articles',
                     faIcon: 'file-text',
                     ngFolder: 'articles',
                     controller: 'ArticlesController',
@@ -135,8 +152,9 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     id: 'elearning',
                     url: '/eLearning',
                     pgTitle: 'eLearning',
-                    caption: 'eLearning',
-                    abstract: 'Blended Learning Pathway',
+                    heading: 'eLearning',
+                    subHeading: 'Blended Learning Pathway',
+                    crumbText: 'eLearning',
                     faIcon: 'cloud',
                     ngFolder: 'eLearning',
                     controller: 'eLearningController',
@@ -150,8 +168,9 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     id: 'ebooks',
                     url: '/eLearning/eBooks',
                     pgTitle: 'eBooks',
-                    caption: 'eBooks',
-                    abstract: 'basic source of Knowledge now in digital format - "eBooks"',
+                    heading: 'eBooks',
+                    subHeading: 'basic source of Knowledge now in digital format - "eBooks"',
+                    crumbText: 'eBooks',
                     faIcon: 'book',
                     ngFolder: 'eBooks',
                     controller: 'eBooksController',
@@ -165,13 +184,14 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     id: 'tutorials',
                     url: '/eLearning/Tutorials',
                     pgTitle: 'Tutorials',
-                    caption: 'Tutorials',
-                    abstract: 'Free online tutorials and videos for self learning technology concepts.',
+                    heading: 'Tutorials',
+                    subHeading: 'Free online tutorials and videos for self learning technology concepts.',
+                    crumbText: 'Tutorials',
                     faIcon: 'laptop',
                     ngFolder: 'Tutorials',
                     controller: 'TutorialsController',
                     view: 'tutorials.html',
-                    children: ['Tutorials_Featured'],
+                    children: ['Tutorials_Featured', 'Tutorials_New'],
                     parent: 'eLearning'
                 },
             Tutorials_Featured:
@@ -179,12 +199,43 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     id: 'tutorials_featured',
                     url: '/eLearning/Tutorials/Featured',
                     pgTitle: 'Featured Tutorials',
-                    caption: 'Featured Tutorials',
-                    abstract: 'Free online tutorials and videos for self learning technology concepts.',
+                    heading: 'Tutorials',
+                    subHeading: 'Featured Tutorials',
+                    crumbText: 'Featured',
                     faIcon: 'bookmark-o',
                     ngFolder: 'Tutorials',
                     controller: 'FeaturedTutorialsController',
                     view: 'featured.html',
+                    children: [],
+                    parent: 'Tutorials'
+                },
+            Tutorials_New:
+                {
+                    id: 'tutorials_new',
+                    url: '/eLearning/Tutorials/New',
+                    pgTitle: 'New Tutorials',
+                    heading: 'Tutorials',
+                    subHeading: 'New Tutorials',
+                    crumbText: 'New',
+                    faIcon: 'asterisk',
+                    ngFolder: 'Tutorials',
+                    controller: 'NewTutorialsController',
+                    view: 'new.html',
+                    children: [],
+                    parent: 'Tutorials'
+                },
+            Tutorials_Course:
+                {
+                    id: 'tutorials_course',
+                    url: '/eLearning/Tutorials/Course/:courseId',
+                    pgTitle: 'New Tutorials',
+                    heading: 'Tutorials',
+                    subHeading: 'Course',
+                    crumbText: 'New',
+                    faIcon: 'asterisk',
+                    ngFolder: 'Tutorials',
+                    controller: 'NewTutorialsController',
+                    view: 'course.html',
                     children: [],
                     parent: 'Tutorials'
                 },
@@ -193,8 +244,8 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     id: 'elearning',
                     url: '/eLearning',
                     pgTitle: 'eLearning',
-                    caption: 'Videos',
-                    abstract: 'Free Videos and Presentations on verious technology topics.',
+                    heading: 'Videos',
+                    subHeading: 'Free Videos and Presentations on verious technology topics.',
                     faIcon: 'film',
                     ngFolder: 'eLearning',
                     controller: 'eLearningController',
@@ -207,8 +258,8 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                         id: 'elearning',
                         url: '/eLearning',
                         pgTitle: 'eLearning',
-                        caption: 'Flash Cards',
-                        abstract: 'Learn verious technology conecpts, topic by topic - one card at a time, with our Flash Cards!',
+                        heading: 'Flash Cards',
+                        subHeading: 'Learn verious technology conecpts, topic by topic - one card at a time, with our Flash Cards!',
                         faIcon: 'tablet',
                         ngFolder: 'eLearning',
                         controller: 'eLearningController',
@@ -238,6 +289,10 @@ var PBDeskGHAppName = 'PBDeskGHApp';
             .when(Sitemap.eLearning.url, { controller: Sitemap.eLearning.controller, templateUrl: NGViewPath(Sitemap.eLearning), caseInsensitiveMatch: true })
             .when(Sitemap.eBooks.url, { controller: Sitemap.eBooks.controller, templateUrl: NGViewPath(Sitemap.eBooks), caseInsensitiveMatch: true })
             .when(Sitemap.Tutorials.url, { controller: Sitemap.Tutorials.controller, templateUrl: NGViewPath(Sitemap.Tutorials), caseInsensitiveMatch: true })
+            .when(Sitemap.Tutorials_Featured.url, { controller: Sitemap.Tutorials_Featured.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Featured), caseInsensitiveMatch: true })
+            .when(Sitemap.Tutorials_New.url, { controller: Sitemap.Tutorials_New.controller, templateUrl: NGViewPath(Sitemap.Tutorials_New), caseInsensitiveMatch: true })
+            .when(Sitemap.Tutorials_Course.url, { controller: Sitemap.Tutorials_Course.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Course), caseInsensitiveMatch: true })
+            .when('/eLearning/Tutorials/:courseId', { controller: Sitemap.Tutorials_Course.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Course), caseInsensitiveMatch: true })
             //.when('/Projects/Edit/:Id', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
 
             .otherwise({ redirectTo: '/' });
