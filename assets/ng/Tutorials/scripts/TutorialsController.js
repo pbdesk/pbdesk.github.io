@@ -14,7 +14,7 @@
         $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
 
         $scope.FeaturedCourses = {};
-        DSFactory.GetData({ apiUrl: 'Featured/Courses', CacheKey: 'featuredCourses' })
+        DSFactory.GetData({ ApiUrl: 'Featured/Courses', CacheKey: 'featuredCourses', AllowCache:false })
             .then(function (result) {
                 $scope.FeaturedCourses = result;
             }, function (reason) {
