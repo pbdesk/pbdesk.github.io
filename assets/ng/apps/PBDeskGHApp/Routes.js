@@ -20,7 +20,7 @@
             .when(Sitemap.Tutorials_Featured.url, { controller: Sitemap.Tutorials_Featured.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Featured), caseInsensitiveMatch: true })
             .when(Sitemap.Tutorials_New.url, { controller: Sitemap.Tutorials_New.controller, templateUrl: NGViewPath(Sitemap.Tutorials_New), caseInsensitiveMatch: true })
             .when(Sitemap.Tutorials_Course.url, { controller: Sitemap.Tutorials_Course.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Course), caseInsensitiveMatch: true })
-            .when('/eLearning/Tutorials/:courseId', { controller: Sitemap.Tutorials_Course.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Course), caseInsensitiveMatch: true })
+            //.when('/eLearning/Tutorials/:courseId', { controller: Sitemap.Tutorials_Course.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Course), caseInsensitiveMatch: true })
             //.when('/Projects/Edit/:Id', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
 
             .otherwise({ redirectTo: '/' });

@@ -120,7 +120,7 @@
             Tutorials_Course:
                 {
                     id: 'tutorials_course',
-                    url: '/eLearning/Tutorials/Course/:courseId',
+                    url: '/eLearning/Tutorials/:courseId',
                     pgTitle: 'New Tutorials',
                     heading: 'Tutorials',
                     subHeading: 'Course',
