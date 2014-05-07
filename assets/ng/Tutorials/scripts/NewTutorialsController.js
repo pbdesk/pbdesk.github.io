@@ -5,16 +5,16 @@
 
     // TODO: replace app with your module name
     angular.module(PBDeskGHAppName).controller(controllerId,
-        ['$scope', '$rootScope', 'Sitemap', 'DSFactory', NewTutorialsController]);
+        ['$scope', '$rootScope', 'Sitemap', 'DataSvcObjects', 'DSFactory', NewTutorialsController]);
 
-    function NewTutorialsController($scope, $rootScope, Sitemap, DSFactory) {
+    function NewTutorialsController($scope, $rootScope, Sitemap, DataSvcObjects, DSFactory) {
         $scope.SitemapNode = Sitemap.Tutorials_New;
         $scope.SitemapBaseNode = $rootScope.GetSitemapBaseNode($scope.SitemapNode)
         $rootScope.SetActiveNav($scope.SitemapBaseNode.id);
         $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
 
         $scope.FeaturedCourses = {};
-        DSFactory.GetData({ apiUrl: 'Featured/Courses', CacheKey: 'featuredCourses' })
+        DSFactory.GetData(DataSvcObjects.Courses_Featured)
             .then(function (result) {
                 $scope.FeaturedCourses = result;
             }, function (reason) {

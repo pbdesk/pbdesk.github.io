@@ -1,5 +1,4 @@
-﻿/// <reference path="../js/PBDeskUtils.js" />
-
+﻿///#source 1 1 /assets/ng/apps/PBDeskGHApp/PBDeskGHApp.js
 var PBDeskGHAppName = 'PBDeskGHApp';
 (function () {
     'use strict';
@@ -108,7 +107,43 @@ var PBDeskGHAppName = 'PBDeskGHApp';
 
     
 
-    PBDeskGHApp.constant('Sitemap',
+
+
+    PBDeskGHApp.config(['$routeProvider', 'Sitemap', function ($routeProvider, Sitemap) {
+
+        $routeProvider
+            .when(Sitemap.Root.url, { controller: Sitemap.Root.controller, templateUrl: NGViewPath(Sitemap.Root) })
+
+            .when(Sitemap.TechNews.url, { controller: Sitemap.TechNews.controller, templateUrl: NGViewPath(Sitemap.TechNews), caseInsensitiveMatch: true })
+            //.when('/Locales/Create', { controller: 'LocalesController', templateUrl: viewPath + 'locales/edit.html' })
+            //.when('/Locales/Edit/:Id', { controller: 'LocalesController', templateUrl: viewPath + 'locales/edit.html' })
+
+            .when(Sitemap.Articles.url, { controller: Sitemap.Articles.controller, templateUrl: NGViewPath(Sitemap.Articles), caseInsensitiveMatch: true })
+            //.when('/Builds/Create', { controller: 'BuildsController', templateUrl: viewPath + 'builds/edit.html' })
+            //.when('/Builds/Edit/:Id', { controller: 'BuildsController', templateUrl: viewPath + 'builds/edit.html' })
+
+            .when(Sitemap.eLearning.url, { controller: Sitemap.eLearning.controller, templateUrl: NGViewPath(Sitemap.eLearning), caseInsensitiveMatch: true })
+            .when(Sitemap.eBooks.url, { controller: Sitemap.eBooks.controller, templateUrl: NGViewPath(Sitemap.eBooks), caseInsensitiveMatch: true })
+            .when(Sitemap.Tutorials.url, { controller: Sitemap.Tutorials.controller, templateUrl: NGViewPath(Sitemap.Tutorials), caseInsensitiveMatch: true })
+            .when(Sitemap.Tutorials_Featured.url, { controller: Sitemap.Tutorials_Featured.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Featured), caseInsensitiveMatch: true })
+            .when(Sitemap.Tutorials_New.url, { controller: Sitemap.Tutorials_New.controller, templateUrl: NGViewPath(Sitemap.Tutorials_New), caseInsensitiveMatch: true })
+            .when(Sitemap.Tutorials_Course.url, { controller: Sitemap.Tutorials_Course.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Course), caseInsensitiveMatch: true })
+            .when('/eLearning/Tutorials/:courseId', { controller: Sitemap.Tutorials_Course.controller, templateUrl: NGViewPath(Sitemap.Tutorials_Course), caseInsensitiveMatch: true })
+            //.when('/Projects/Edit/:Id', { controller: 'ProjectsController', templateUrl: viewPath + 'projects/edit.html' })
+
+            .otherwise({ redirectTo: '/' });
+
+    }]);
+
+    function NGViewPath(node) {
+        return '/assets/ng/' + node.ngFolder + '/' + node.view;
+    }
+})();
+///#source 1 1 /assets/ng/apps/PBDeskGHApp/Sitemap.js
+(function () {
+    'use strict';
+
+    angular.module(PBDeskGHAppName).constant('Sitemap',
         {
             Root:
                 {
@@ -118,7 +153,7 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     heading: 'PBDesk',
                     crumbText: 'Home',
                     faIcon: 'home',
-                    ngFolder:  'home',
+                    ngFolder: 'home',
                     controller: 'HomeController',
                     view: 'home.html',
                     parent: null
@@ -163,7 +198,7 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     parent: 'Root'
                 },
 
-            eBooks: 
+            eBooks:
                 {
                     id: 'ebooks',
                     url: '/eLearning/eBooks',
@@ -179,7 +214,7 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     parent: 'eLearning'
 
                 },
-            Tutorials: 
+            Tutorials:
                 {
                     id: 'tutorials',
                     url: '/eLearning/Tutorials',
@@ -239,7 +274,7 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     children: [],
                     parent: 'Tutorials'
                 },
-            Videos: 
+            Videos:
                 {
                     id: 'elearning',
                     url: '/eLearning',
@@ -253,27 +288,40 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                     children: [],
                     parent: 'eLearning'
                 },
-            FlashCards: 
+            FlashCards:
                 {
-                        id: 'elearning',
-                        url: '/eLearning',
-                        pgTitle: 'eLearning',
-                        heading: 'Flash Cards',
-                        subHeading: 'Learn verious technology conecpts, topic by topic - one card at a time, with our Flash Cards!',
-                        faIcon: 'tablet',
-                        ngFolder: 'eLearning',
-                        controller: 'eLearningController',
-                        view: 'elearning.html',
-                        children: [],
-                        parent: 'eLearning'
+                    id: 'elearning',
+                    url: '/eLearning',
+                    pgTitle: 'eLearning',
+                    heading: 'Flash Cards',
+                    subHeading: 'Learn verious technology conecpts, topic by topic - one card at a time, with our Flash Cards!',
+                    faIcon: 'tablet',
+                    ngFolder: 'eLearning',
+                    controller: 'eLearningController',
+                    view: 'elearning.html',
+                    children: [],
+                    parent: 'eLearning'
                 }
-
-
-                
-
         });
 
-    PBDeskGHApp.config(['$routeProvider', 'Sitemap', function ($routeProvider, Sitemap) {
+})();
+///#source 1 1 /assets/ng/apps/PBDeskGHApp/DataSvcObjects.js
+(function () {
+    'use strict';
+
+    angular.module(PBDeskGHAppName).constant('DataSvcObjects',
+        {
+            Courses_Featured:
+                { ApiUrl: 'Featured/Courses', CacheKey: 'featuredCourses', AllowCache: false }
+            
+        });
+
+})();
+///#source 1 1 /assets/ng/apps/PBDeskGHApp/Routes.js
+(function () {
+    'use strict';
+
+    angular.module(PBDeskGHAppName).config(['$routeProvider', 'Sitemap', function ($routeProvider, Sitemap) {
 
         $routeProvider
             .when(Sitemap.Root.url, { controller: Sitemap.Root.controller, templateUrl: NGViewPath(Sitemap.Root) })
