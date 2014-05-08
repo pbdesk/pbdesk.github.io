@@ -18,7 +18,37 @@ var PBDeskGHAppName = 'PBDeskGHApp';
     PBDeskGHApp.run(['$q', '$rootScope', '$location', 'Sitemap',
     function ($q, $rootScope, $location, Sitemap) {
 
+        $rootScope.SitemapWork = function (currentNode, currentScope) {
+            currentScope.Sitemap = Sitemap;
+            currentScope.SitemapNodeCurrent = currentNode;
+            currentScope.SitemapNodeParent = null;
+            if (currentNode != null && currentNode.parent != null && Sitemap[currentNode.parent] != null) {
+                currentScope.SitemapNodeParent = Sitemap[currentNode.parent];
+            }
 
+            currentScope.SitemapNodeBase = null;
+            var current = currentNode;
+            if (current != null) {
+                while (current.parent !== 'Root') {
+                    current = Sitemap[current.parent]
+                }
+                if (current != null && current.parent === 'Root') {
+                    currentScope.SitemapNodeBase = current;
+                }
+            }
+
+            currentScope.SitemapNodeChildren = [];
+            var counter = 0;
+            if (currentNode != null && currentNode.children != null && currentNode.children.length > 0) {
+                $.each(currentNode.children, function (index, value) {
+                    if (Sitemap[value] != null) {
+                        currentScope.SitemapNodeChildren[counter] = Sitemap[value];
+                        counter++;
+                    }
+                });
+            }
+
+        }
         $rootScope.GetSitemapNodeParent = function (currentNode) {
             var parent = null;
             if (currentNode != null && currentNode.parent != null && Sitemap[currentNode.parent] != null) {

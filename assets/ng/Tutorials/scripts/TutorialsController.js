@@ -8,8 +8,9 @@
         ['$scope', '$rootScope', 'Sitemap', 'DataSvcObjects', 'DSFactory', TutorialsController]);
 
     function TutorialsController($scope, $rootScope, Sitemap, DataSvcObjects, DSFactory) {
-        $scope.SitemapNode = Sitemap.Tutorials;
-        $scope.SitemapNodeParent = $rootScope.GetSitemapNodeParent($scope.SitemapNode)
+        $rootScope.SitemapWork(Sitemap.Tutorials, $scope);
+        //$scope.SitemapNode = Sitemap.Tutorials;
+        //$scope.SitemapNodeParent = $rootScope.GetSitemapNodeParent($scope.SitemapNode)
         $rootScope.SetActiveNav($scope.SitemapNodeParent.id);
         $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
 
