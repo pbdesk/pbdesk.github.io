@@ -11,8 +11,8 @@
         $rootScope.SitemapWork(Sitemap.Tutorials, $scope);
         //$scope.SitemapNode = Sitemap.Tutorials;
         //$scope.SitemapNodeParent = $rootScope.GetSitemapNodeParent($scope.SitemapNode)
-        $rootScope.SetActiveNav($scope.SitemapNodeParent.id);
-        $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
+        //$rootScope.SetActiveNav($scope.SitemapNodeParent.id);
+        //$rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
 
         $scope.FeaturedCourses = {};
         DSFactory.GetData(DataSvcObjects.Courses_Featured)
@@ -25,14 +25,14 @@
 
             });
 
-        $scope.Crumbs = $rootScope.GetCrumbsFromCurrentNode($scope.SitemapNode);
+        //$scope.Crumbs = $rootScope.GetCrumbsFromCurrentNode($scope.SitemapNode);
             
 
 
 
 
         $scope.$on('$routeChangeSuccess', function () {
-            $rootScope.SetActiveNav($scope.SitemapNodeParent.id);
+            $rootScope.SetActiveNav($scope.SitemapNodeBase.id);
         });
     }
 })();

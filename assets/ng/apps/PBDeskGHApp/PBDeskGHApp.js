@@ -21,35 +21,24 @@ var PBDeskGHAppName = 'PBDeskGHApp';
         $rootScope.SitemapWork = function (currentNode, currentScope) {
             currentScope.Sitemap = Sitemap;
             currentScope.SitemapNodeCurrent = currentNode;
-            currentScope.SitemapNodeParent = null;
-            if (currentNode != null && currentNode.parent != null && Sitemap[currentNode.parent] != null) {
-                currentScope.SitemapNodeParent = Sitemap[currentNode.parent];
-            }
-
-            currentScope.SitemapNodeBase = null;
-            var current = currentNode;
-            if (current != null) {
-                while (current.parent !== 'Root') {
-                    current = Sitemap[current.parent]
-                }
-                if (current != null && current.parent === 'Root') {
-                    currentScope.SitemapNodeBase = current;
-                }
-            }
-
-            currentScope.SitemapNodeChildren = [];
-            var counter = 0;
-            if (currentNode != null && currentNode.children != null && currentNode.children.length > 0) {
-                $.each(currentNode.children, function (index, value) {
-                    if (Sitemap[value] != null) {
-                        currentScope.SitemapNodeChildren[counter] = Sitemap[value];
-                        counter++;
-                    }
-                });
-            }
+            currentScope.SitemapNodeParent = GetSitemapNodeParent(currentNode);            
+            currentScope.SitemapNodeBase = GetSitemapBaseNode(currentNode);            
+            currentScope.SitemapNodeChildren = GetSitemapNodeChildren(currentNode);
+            currentScope.Crumbs = GetCrumbsFromCurrentNode(currentNode);
+            SetActiveNav(currentScope.SitemapNodeBase.id);
+            SetPgTitle(currentScope.SitemapNodeCurrent.pgTitle);
 
         }
-        $rootScope.GetSitemapNodeParent = function (currentNode) {
+
+        $rootScope.SetActiveNav = function (navId) {
+            return SetActiveNav(navId);
+        }
+
+        $rootScope.SetPgTitle = function (ttl) {
+            return SetPgTitle(ttl);
+        }
+
+        function GetSitemapNodeParent(currentNode) {
             var parent = null;
             if (currentNode != null && currentNode.parent != null && Sitemap[currentNode.parent] != null) {
                 parent = Sitemap[currentNode.parent];
@@ -57,7 +46,7 @@ var PBDeskGHAppName = 'PBDeskGHApp';
             return parent;
         }
 
-        $rootScope.GetSitemapBaseNode = function (currentNode) {
+        function GetSitemapBaseNode(currentNode) {
             var parent = null;
             var current = currentNode;
             if (current != null) {
@@ -71,7 +60,7 @@ var PBDeskGHAppName = 'PBDeskGHApp';
             return parent;
         }
 
-        $rootScope.GetSitemapNodeChildren = function (currentNode) {
+        function GetSitemapNodeChildren(currentNode) {
             var children = [];
             var counter = 0;
             if (currentNode != null && currentNode.children != null && currentNode.children.length > 0) {
@@ -84,21 +73,20 @@ var PBDeskGHAppName = 'PBDeskGHApp';
             }
             return children;
         }
-
-        $rootScope.SetActiveNav = function (navId) {
+        
+        function SetActiveNav(navId) {
             if (navId != null && navId.length > 0) {
                 var currentNavItem = '#navItem' + navId;
                 $('[id^=navItem]').removeClass('active');
                 $('#navItem' + navId).addClass('active');
             }
-        };      
-          
+        };   
+        
+        function SetPgTitle(ttl) {
+            document.title = PBDeskJS.StrUtils.Format("PBDesk - {0} | from the desk of Pinal Bhatt!", ttl);
+        }  
 
-            $rootScope.SetPgTitle = function (ttl) {
-                document.title = PBDeskJS.StrUtils.Format("PBDesk - {0} | from the desk of Pinal Bhatt!", ttl);
-            }
-
-            $rootScope.GetCrumbsFromCurrentNode = function (currentNode) {
+        function GetCrumbsFromCurrentNode(currentNode) {
                 var crumbs = [];
                 if (currentNode != null) {
                     var current = currentNode;
@@ -117,23 +105,23 @@ var PBDeskGHAppName = 'PBDeskGHApp';
                 return crumbs.reverse();
             }
 
-            $rootScope.GetBreadcrumb = function(){
-                var url = $location.url();
-                var items = url.split("/");
-                var crumbs = [];
-                if (items.length > 0) {
-                    $.each(items, function (index, value) {
-                        if (value === '') {
-                            crumbs[index] = Sitemap["Root"];
-                        }
-                        else {
-                            crumbs[index] = Sitemap[value];
-                        }
-                    });
-                }
+            //$rootScope.GetBreadcrumb = function(){
+            //    var url = $location.url();
+            //    var items = url.split("/");
+            //    var crumbs = [];
+            //    if (items.length > 0) {
+            //        $.each(items, function (index, value) {
+            //            if (value === '') {
+            //                crumbs[index] = Sitemap["Root"];
+            //            }
+            //            else {
+            //                crumbs[index] = Sitemap[value];
+            //            }
+            //        });
+            //    }
                 
-                return crumbs;
-            }
+            //    return crumbs;
+            //}
         }]);
 
 })();

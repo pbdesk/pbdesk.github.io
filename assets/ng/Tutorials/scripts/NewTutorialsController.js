@@ -8,10 +8,7 @@
         ['$scope', '$rootScope', 'Sitemap', 'DataSvcObjects', 'DSFactory', NewTutorialsController]);
 
     function NewTutorialsController($scope, $rootScope, Sitemap, DataSvcObjects, DSFactory) {
-        $scope.SitemapNode = Sitemap.Tutorials_New;
-        $scope.SitemapBaseNode = $rootScope.GetSitemapBaseNode($scope.SitemapNode)
-        $rootScope.SetActiveNav($scope.SitemapBaseNode.id);
-        $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
+        $rootScope.SitemapWork(Sitemap.Tutorials_New, $scope);
 
         $scope.FeaturedCourses = {};
         DSFactory.GetData(DataSvcObjects.Courses_Featured)
@@ -24,14 +21,8 @@
 
             });
 
-        $scope.Crumbs = $rootScope.GetCrumbsFromCurrentNode($scope.SitemapNode);
-            
-
-
-
-
         $scope.$on('$routeChangeSuccess', function () {
-            $rootScope.SetActiveNav($scope.SitemapBaseNode.id);
+            $rootScope.SetActiveNav($scope.SitemapNodeBase.id);
         });
     }
 })();

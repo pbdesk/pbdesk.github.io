@@ -8,14 +8,10 @@
         ['$scope', '$rootScope', 'Sitemap', eBooksController]);
 
     function eBooksController($scope, $rootScope, Sitemap) {
-        $scope.SitemapNode = Sitemap.eBooks;
-        $scope.SitemapNodeParent = $rootScope.GetSitemapNodeParent($scope.SitemapNode)
-        $rootScope.SetActiveNav($scope.SitemapNodeParent.id);        
-        $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
-        $scope.Crumbs = $rootScope.GetCrumbsFromCurrentNode($scope.SitemapNode);
-        
+        $rootScope.SitemapWork(Sitemap.eBooks, $scope);
+
         $scope.$on('$routeChangeSuccess', function () {
-            $rootScope.SetActiveNav($scope.SitemapNodeParent.id);
+            $rootScope.SetActiveNav($scope.SitemapNodeBase.id);
         });
     }
 })();

@@ -6,8 +6,9 @@
             Courses_Featured:
                  { ApiUrl: 'Featured/Courses', CacheKey: 'featuredCourses1', AllowCache: true },
             Courses_New:
-                { ApiUrl: 'Featured/Courses', CacheKey: 'featuredCourses', AllowCache: false }
-            
+                { ApiUrl: 'Featured/Courses', CacheKey: 'featuredCourses', AllowCache: false },
+            Courses_Item:
+                { ApiUrl: 'Courses/course/{0}', CacheKey: 'courseItem{0}', AllowCache: false },
         });
 
 })();

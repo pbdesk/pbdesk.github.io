@@ -117,6 +117,36 @@
                     children: [],
                     parent: 'Tutorials'
                 },
+            Tutorials_Catalog:
+                {
+                    id: 'tutorials_catalog',
+                    url: '/eLearning/Tutorials/Catalog',
+                    pgTitle: 'Tutorials Catalog',
+                    heading: 'Tutorials',
+                    subHeading: 'Catalog',
+                    crumbText: 'Catalog',
+                    faIcon: 'list-alt',
+                    ngFolder: 'Tutorials',
+                    controller: 'CatalogTutorialsController',
+                    view: 'catalog.html',
+                    children: [],
+                    parent: 'Tutorials'
+                },
+            Tutorials_ByTag:
+                {
+                    id: 'tutorials_bytag',
+                    url: '/eLearning/Tutorials/Tags',
+                    pgTitle: 'Tutorials By Tags',
+                    heading: 'Tutorials',
+                    subHeading: 'By Tags',
+                    crumbText: 'Tags',
+                    faIcon: 'tags',
+                    ngFolder: 'Tutorials',
+                    controller: 'TagsTutorialsController',
+                    view: 'new.html',
+                    children: [],
+                    parent: 'Tutorials'
+                },
             Tutorials_Course:
                 {
                     id: 'tutorials_course',
@@ -127,7 +157,7 @@
                     crumbText: 'New',
                     faIcon: 'asterisk',
                     ngFolder: 'Tutorials',
-                    controller: 'NewTutorialsController',
+                    controller: 'CourseController',
                     view: 'course.html',
                     children: [],
                     parent: 'Tutorials'

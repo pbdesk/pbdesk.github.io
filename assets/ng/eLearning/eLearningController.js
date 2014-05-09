@@ -8,11 +8,7 @@
         ['$scope', '$rootScope', 'Sitemap', eLearningController]);
 
     function eLearningController($scope, $rootScope, Sitemap) {
-        $scope.SitemapNode = Sitemap.eLearning;
-        $scope.SitemapNodeParent = $rootScope.GetSitemapNodeParent($scope.SitemapNode);
-        $scope.SitemapNodeChildren = $rootScope.GetSitemapNodeChildren($scope.SitemapNode);
-        $rootScope.SetActiveNav($scope.SitemapNode.id);
-        $rootScope.SetPgTitle($scope.SitemapNode.pgTitle);
+        $rootScope.SitemapWork(Sitemap.eLearning, $scope);
 
         $.each($scope.SitemapNodeChildren, function (index, value) {
             switch (index) {
@@ -27,7 +23,7 @@
 
 
         $scope.$on('$routeChangeSuccess', function () {
-            $rootScope.SetActiveNav($scope.SitemapNode.id);
+            $rootScope.SetActiveNav($scope.SitemapNodeCurrent.id);
         });
 
         
