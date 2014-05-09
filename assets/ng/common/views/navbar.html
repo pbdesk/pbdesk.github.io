@@ -8,19 +8,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="navItem{{Sitemap.Root.id}}" class="navbar-brand" href="/"><i class="fa fa-{{Sitemap.Root.faIcon}}"></i> {{Sitemap.Root.caption}}</a>
+                <a id="navItem{{Sitemap.Root.id}}" class="navbar-brand" href="/"><i class="fa fa-{{Sitemap.Root.faIcon}}"></i> {{Sitemap.Root.heading}}</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li id="navItem{{Sitemap.TechNews.id}}"><a href="#{{Sitemap.TechNews.url}}"><i class="fa fa-{{Sitemap.TechNews.faIcon}}"></i> {{Sitemap.TechNews.caption}}</a></li>
-                    <li id="navItem{{Sitemap.Articles.id}}"><a href="#{{Sitemap.Articles.url}}"><i class="fa fa-{{Sitemap.Articles.faIcon}}"></i> {{Sitemap.Articles.caption}}</a></li>
+                    <li id="navItem{{Sitemap.TechNews.id}}"><a href="#{{Sitemap.TechNews.url}}"><i class="fa fa-{{Sitemap.TechNews.faIcon}}"></i> {{Sitemap.TechNews.heading}}</a></li>
+                    <li id="navItem{{Sitemap.Articles.id}}"><a href="#{{Sitemap.Articles.url}}"><i class="fa fa-{{Sitemap.Articles.faIcon}}"></i> {{Sitemap.Articles.heading}}</a></li>
                     <li><a href="#contact"><i class="fa fa-lightbulb-o"></i> Spotlight</a></li>
                     <li><a href="#contact"><i class="fa fa-desktop"></i> Showcase</a></li>
                     <li id="navItem{{Sitemap.eLearning.id}}" class="dropdown" >
                         <!--ng-class="{dropdown: true, active: MainMenu === 'elearning'}"-->
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-{{Sitemap.eLearning.faIcon}}"></i> {{Sitemap.eLearning.caption}}<b class="caret"></b></a>
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-{{Sitemap.eLearning.faIcon}}"></i> {{Sitemap.eLearning.heading}}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li ng-repeat="navItem in Sitemap.eLearning.children"><a href="#{{Sitemap[navItem].url}}"><i class="fa fa-{{Sitemap[navItem].faIcon}}"></i> {{Sitemap[navItem].caption}}</a></li>
+                            <li ng-repeat="navItem in Sitemap.eLearning.children"><a href="#{{Sitemap[navItem].url}}"><i class="fa fa-{{Sitemap[navItem].faIcon}}"></i> {{Sitemap[navItem].heading}}</a></li>
                         </ul>
                     </li>
                     <li><a href="#contact"><i class="fa fa-bold"></i> Blogs</a></li>

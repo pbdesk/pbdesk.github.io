@@ -4,7 +4,7 @@
         <div class="col-lg-3" ng-repeat="subItem in SitemapNodeChildren">
             <div class="alert alert-{{subItem.colorcode}}">
                 <div class="pull-left" style="padding-right:10px"><a ng-href="#{{subItem.url}}" class="alert-link"><i class="fa fa-{{subItem.faIcon}} fa-3x"></i></a></div>
-                <a ng-href="#{{subItem.url}}" class="alert-link"><strong>{{subItem.caption}}</strong></a> {{subItem.abstract}}
+                <a ng-href="#{{subItem.url}}" class="alert-link"><strong>{{subItem.heading}}</strong></a> {{subItem.subHeading}}
             </div>
         </div>
 
