@@ -25,6 +25,17 @@ ng\:form {
 .alignj{
     text-align: justify !important;
 }
+
+blockquote{
+   border-left: 5px solid #2fa4e7;
+}
+.custwell{
+    border-radius: 0;
+    border-width: 0;
+    border-top: solid 1px #2fa4e7;
+    
+    margin-top:10px;
+}
 /* Footer Styles - Start*/
 footer {
 padding-left: 15px;

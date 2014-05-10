@@ -38,6 +38,22 @@ var PBDeskGHAppName = 'PBDeskGHApp';
             return SetPgTitle(ttl);
         }
 
+        $rootScope.SetCourseUrl = function (course) {
+            if (course != null) {
+                course.CourseUrl = '';
+                switch (course.Format) {
+                    case 115: {
+                        course.CourseUrl = '#/eLearning/Tutorials/' + course.NodeId;
+                        break;
+                    }
+                    case 119: {
+                        course.CourseUrl = '/e-Learning/Tutorials/UTCourse#/' + course.NodeId + '-' + course.Title;
+                        break;
+                    }
+                }
+            }
+        }
+
         function GetSitemapNodeParent(currentNode) {
             var parent = null;
             if (currentNode != null && currentNode.parent != null && Sitemap[currentNode.parent] != null) {

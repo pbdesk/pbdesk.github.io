@@ -9,6 +9,8 @@
                 { ApiUrl: 'Featured/Courses', CacheKey: 'featuredCourses', AllowCache: false },
             Courses_Item:
                 { ApiUrl: 'Courses/course/{0}', CacheKey: 'courseItem{0}', AllowCache: false },
+            Courses_Catalog:
+                { ApiUrl: 'Courses/Catalog', CacheKey: 'courseCatalog', AllowCache: false },
         });
 
 })();

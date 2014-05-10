@@ -1,0 +1,6 @@
+﻿<!-- Depends on Current.Authors property of $scope-->
+<div class="list-group">
+    <a href="#" class="list-group-item active">Author(s) <i class="fa fa-{{Sitemap.Tutorials.faIcon}}"></i></a>
+    <a href="#" class="list-group-item" ng-repeat="author in Current.Authors">{{author.Name}}</a>    
+</div>
+

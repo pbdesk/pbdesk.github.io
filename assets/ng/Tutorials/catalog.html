@@ -1,0 +1,86 @@
+﻿<ng-include src="'/assets/ng/common/views/pgheader.html'"></ng-include>
+<ng-include src="'/assets/ng/common/views/breadcrumb.html'"></ng-include>
+<div class="container">
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+            <p class="pull-right visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas" onclick="$('.row-offcanvas').toggleClass('active')">Toggle nav</button>
+            </p>
+            <blockquote>
+                <h3 style="margin-top:5px">Tutorials Catalog</h3>
+                <div class="input-group" style="width:75%">
+                    <input type="text" class="form-control ng-pristine ng-valid" placeholder="filter" ng-model="filterParameter.Title">
+                    <span class="input-group-addon"><i class="fa fa-filter fa-lg"></i></span>
+                </div>
+            </blockquote>
+            <table class="table table-striped tcart" ng-repeat="i in Catalog">
+                <thead>
+                    <tr>
+                        <th width="60%">{{i.CategoryName}}</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="r in  i.Courses | filter:filterParameter" class="animate flip-in">
+                        <td style="padding-left:40px"><a ng-href="#/eLearning/Tutorials/{{r.NodeId}}">{{r.Title}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="row">
+                <div class="col-6 col-sm-6 col-lg-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                </div><!--/span-->
+                <div class="col-6 col-sm-6 col-lg-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                </div><!--/span-->
+                <div class="col-6 col-sm-6 col-lg-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                </div><!--/span-->
+                <div class="col-6 col-sm-6 col-lg-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                </div><!--/span-->
+                <div class="col-6 col-sm-6 col-lg-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                </div><!--/span-->
+                <div class="col-6 col-sm-6 col-lg-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+                </div><!--/span-->
+            </div><!--/row-->
+        </div><!--/span-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ng-include src="'/assets/ng/common/views/sidebars/elearning.html'"></ng-include>
+            <ng-include src="'/assets/ng/common/views/sidebars/tutorials.html'"></ng-include>
+            <div class="list-group">
+                <a href="#/eLearning" class="list-group-item active">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+            </div>
+            <ng-include src="'/assets/ng/Ads/Ad120x240.html'"></ng-include>
+        </div><!--/span-->
+    </div><!--/row-->
+
+</div>
+

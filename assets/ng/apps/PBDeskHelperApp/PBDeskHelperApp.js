@@ -21,12 +21,12 @@
         // Define the functions and properties to reveal.
         
 
-        function setCourseUrl(course) {
+        function getCourseUrl(course) {
             if (course != null) {
                 course.CourseUrl = '';
                 switch (course.Format) {
                     case 115: {
-                        course.CourseUrl = '/e-Learning/Tutorials/C9Course#/' + course.NodeId + '-' + course.Title;
+                        course.CourseUrl = '#/eLearning/Tutorials/' + course.NodeId;
                         break;
                     }
                     case 119: {
@@ -48,7 +48,7 @@
         //#endregion
 
         var service = {
-            SetCourseUrl: setCourseUrl,
+            GetCourseUrl: getCourseUrl,
             SetDeckUrl: setDeckUrl
         };
 
