@@ -159,8 +159,23 @@
                     ngFolder: 'Tutorials',
                     controller: 'CourseController',
                     view: 'course.html',
-                    children: [],
+                    children: ['Tutorials_Course_Item'],
                     parent: 'Tutorials'
+                },
+            Tutorials_Course_Item:
+                {
+                    id: 'tutorials_course_item',
+                    url: '/eLearning/Tutorials/:courseId/:itemId',
+                    pgTitle: 'New Tutorials',
+                    heading: 'Tutorials',
+                    subHeading: 'Course',
+                    crumbText: 'New',
+                    faIcon: 'asterisk',
+                    ngFolder: 'Tutorials',
+                    controller: 'CourseItemController',
+                    view: 'courseitem.html',
+                    children: [],
+                    parent: 'Tutorials_Course'
                 },
             Videos:
                 {
