@@ -14,7 +14,8 @@
                     ngFolder: 'home',
                     controller: 'HomeController',
                     view: 'home.html',
-                    parent: null
+                    parent: null,
+                    children: []
                 },
             TechNews:
                 {
