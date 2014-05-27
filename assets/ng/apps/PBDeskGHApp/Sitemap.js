@@ -15,7 +15,7 @@
                     controller: 'HomeController',
                     view: 'home.html',
                     parent: null,
-                    children: []
+                    children: ['TechNews', 'Articles', 'eLearning', 'Spotlight', 'Showcase', 'Blogs', 'About']
                 },
             TechNews:
                 {
@@ -205,6 +205,58 @@
                     view: 'elearning.html',
                     children: [],
                     parent: 'eLearning'
+                },
+            Showcase:
+                {
+                    id: 'articles',
+                    url: '/Articles',
+                    pgTitle: 'Articles',
+                    heading: 'Articles',
+                    crumbText: 'Articles',
+                    faIcon: 'file-text',
+                    ngFolder: 'articles',
+                    controller: 'ArticlesController',
+                    view: 'articles.html',
+                    parent: 'Root'
+                },
+            Spotlight:
+                {
+                    id: 'articles',
+                    url: '/Articles',
+                    pgTitle: 'Articles',
+                    heading: 'Articles',
+                    crumbText: 'Articles',
+                    faIcon: 'file-text',
+                    ngFolder: 'articles',
+                    controller: 'ArticlesController',
+                    view: 'articles.html',
+                    parent: 'Root'
+                },
+            Blogs:
+                {
+                    id: 'articles',
+                    url: '/Articles',
+                    pgTitle: 'Articles',
+                    heading: 'Articles',
+                    crumbText: 'Articles',
+                    faIcon: 'file-text',
+                    ngFolder: 'articles',
+                    controller: 'ArticlesController',
+                    view: 'articles.html',
+                    parent: 'Root'
+                },
+            About:
+                {
+                    id: 'articles',
+                    url: '/Articles',
+                    pgTitle: 'Articles',
+                    heading: 'Articles',
+                    crumbText: 'Articles',
+                    faIcon: 'file-text',
+                    ngFolder: 'articles',
+                    controller: 'ArticlesController',
+                    view: 'articles.html',
+                    parent: 'Root'
                 }
         });
 
