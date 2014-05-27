@@ -148,11 +148,29 @@
         });
 
         describe("DataSvcObjects Constant", function () {
-            var DataSvcObj;
+           
+            var DSObj = {};
+            var ProperyList = ['ApiUrl', 'CacheKey', 'AllowCache'];
 
             beforeEach(inject(function (DataSvcObjects) {
-                DataSvcObj = DataSvcObjects;
+                DSObj = DataSvcObjects;
             }));
+
+            function PropertyDefinedTest(nodeName, property) {
+                since("- '" + nodeName + '.' + property + "' is not defined")
+                    .expect(DSObj[nodeName][property])
+                    .toBeDefined();
+            }
+
+
+            it("All items have required properties defined", function () {
+                for (var item in DSObj) {
+                    for (var prop in ProperyList) {
+                        PropertyDefinedTest(item, ProperyList[prop]);
+                    }
+                }
+            });
+
         });
 
 
