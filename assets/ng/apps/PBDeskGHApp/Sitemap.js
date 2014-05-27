@@ -27,7 +27,9 @@
                     faIcon: 'info',
                     ngFolder: 'news',
                     controller: 'NewsController',
-                    view: 'news.html'
+                    view: 'news.html',
+                    parent: 'Root',
+                    children: []
                 },
             Articles:
                 {
@@ -39,7 +41,9 @@
                     faIcon: 'file-text',
                     ngFolder: 'articles',
                     controller: 'ArticlesController',
-                    view: 'articles.html'
+                    view: 'articles.html',
+                    parent: 'Root',
+                    children: []
                 },
             eLearning:
                 {
@@ -85,7 +89,7 @@
                     ngFolder: 'Tutorials',
                     controller: 'TutorialsController',
                     view: 'tutorials.html',
-                    children: ['Tutorials_Featured', 'Tutorials_New'],
+                    children: ['Tutorials_Featured', 'Tutorials_New', 'Tutorials_Catalog', 'Tutorials_ByTag', 'Tutorials_Course'],
                     parent: 'eLearning'
                 },
             Tutorials_Featured:
@@ -180,11 +184,12 @@
                 },
             Videos:
                 {
-                    id: 'elearning',
+                    id: 'videos',
                     url: '/eLearning',
                     pgTitle: 'eLearning',
                     heading: 'Videos',
                     subHeading: 'Free Videos and Presentations on verious technology topics.',
+                    crumbText: 'Videos',
                     faIcon: 'film',
                     ngFolder: 'eLearning',
                     controller: 'eLearningController',
@@ -194,11 +199,12 @@
                 },
             FlashCards:
                 {
-                    id: 'elearning',
+                    id: 'flashcards',
                     url: '/eLearning',
                     pgTitle: 'eLearning',
                     heading: 'Flash Cards',
                     subHeading: 'Learn verious technology conecpts, topic by topic - one card at a time, with our Flash Cards!',
+                    crumbText: 'FlashCards',
                     faIcon: 'tablet',
                     ngFolder: 'eLearning',
                     controller: 'eLearningController',
@@ -208,7 +214,7 @@
                 },
             Showcase:
                 {
-                    id: 'articles',
+                    id: 'showcase',
                     url: '/Articles',
                     pgTitle: 'Articles',
                     heading: 'Articles',
@@ -217,11 +223,12 @@
                     ngFolder: 'articles',
                     controller: 'ArticlesController',
                     view: 'articles.html',
-                    parent: 'Root'
+                    parent: 'Root',                    
+                    children: []
                 },
             Spotlight:
                 {
-                    id: 'articles',
+                    id: 'spotlight',
                     url: '/Articles',
                     pgTitle: 'Articles',
                     heading: 'Articles',
@@ -230,11 +237,12 @@
                     ngFolder: 'articles',
                     controller: 'ArticlesController',
                     view: 'articles.html',
-                    parent: 'Root'
+                    parent: 'Root',
+                    children: []
                 },
             Blogs:
                 {
-                    id: 'articles',
+                    id: 'blogs',
                     url: '/Articles',
                     pgTitle: 'Articles',
                     heading: 'Articles',
@@ -243,11 +251,12 @@
                     ngFolder: 'articles',
                     controller: 'ArticlesController',
                     view: 'articles.html',
-                    parent: 'Root'
+                    parent: 'Root',
+                    children: []
                 },
             About:
                 {
-                    id: 'articles',
+                    id: 'about',
                     url: '/Articles',
                     pgTitle: 'Articles',
                     heading: 'Articles',
@@ -256,7 +265,8 @@
                     ngFolder: 'articles',
                     controller: 'ArticlesController',
                     view: 'articles.html',
-                    parent: 'Root'
+                    parent: 'Root',
+                    children: []
                 }
         });
 

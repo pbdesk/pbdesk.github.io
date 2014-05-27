@@ -15,23 +15,91 @@
             }));
 
 
-            function PropertyDefinedTest1(obj, nodeName, property) {
-               
-                since("- '" + nodeName + '.' + property + "' is not defined").expect(obj[nodeName][property]).toBeDefined();
-               
+            function PropertyDefinedTest( nodeName, property) {               
+                since("- '" + nodeName + '.' + property + "' is not defined")
+                    .expect(SITEMAP[nodeName][property])
+                    .toBeDefined();
             }
-            function PropertyDefinedTest(objName, property) {
-                it("- '" + objName + '.' + property + "' is defined", function () {
-                    expect(SITEMAP[objName][property]).toBeDefined();
-                });
+
+            function ParentValidTest(nodeToTest, expectedParent) {
+                if (nodeToTest.id === 'home') {
+                    since(nodeToTest.id + ' has invalid parent')
+                     .expect(SITEMAP[nodeToTest.parent])
+                     .toBeNull();
+                }
+                else {
+                    since(nodeToTest.id + ' has invalid parent')
+                        .expect(SITEMAP[nodeToTest.parent])
+                        .toBe(expectedParent);
+                }
             }
+
+            function IdValidityTest(nodeToTest, nodename) {
+
+                since('id for ' + nodename + '  is null')
+                        .expect(nodeToTest.id)
+                        .not.toBeNull();
+
+                since('id for ' + nodename + '  has invalid length ')
+                        .expect(nodeToTest.id.length)
+                        .toBeGreaterThan(1);
+
+            }
+
+            function IdUniquenessTest(nodeToTest, nodename) {
+                var counter = 0;
+                var testId = nodeToTest.id;
+                for (var item in SITEMAP) {
+                    if (SITEMAP[item].id == testId) {
+                        counter++;
+                    }
+                }
+                since('id ' + testId + '  is not unuque')
+                        .expect(counter)
+                        .toBe(1);
+            }
+            function ParentValidityTest(nodeToTest, nodename) {
+                if (nodeToTest.id === 'home') {
+
+                }
+                else {
+                    since('ParentValidityTest-01 ' + nodename + ' has null parent')
+                        .expect(nodeToTest.parent)
+                        .not.toBeNull();
+
+                    since('ParentValidityTest-02 ' + nodename + ' has invalid parent')
+                        .expect(SITEMAP[nodeToTest.parent])
+                        .toBeDefined();
+
+                    var parentNode = SITEMAP[nodeToTest.parent];
+                    since('ParentValidityTest-03 ' + nodename + ' has invalid parent')
+                       .expect(parentNode.children.length)
+                       .toBeGreaterThan(0);
+
+                    since('ParentValidityTest-04 ' + nodename + ' has non matching parent')
+                        .expect(parentNode.children)
+                        .toContain(nodename);
+
+                }
+            }
+
+            function ParentChildTest(nodeToTest) {
+                for (var item in nodeToTest.children) {
+                    var currentNode = SITEMAP[nodeToTest.children[item]];
+                    ParentValidTest(currentNode, nodeToTest);
+                    if (currentNode.children.length > 0) {
+                        ParentChildTest(currentNode);
+                    }
+                }
+            }
+
 
             it("Has Root item defined", function () {
                 expect(SITEMAP["Root"]).toBeDefined();
                 expect(SITEMAP.Root).toBeDefined();
             });
 
-            describe("Has all required properties for Root", function () {
+            it("Has all required properties for Root", function () {
                 for (var item in ProperyList) {
                     //RootPropertyDefinedTest(ProperyList[item]);
                     PropertyDefinedTest("Root", ProperyList[item]);
@@ -48,52 +116,33 @@
             });
 
             it("All items have required properties defined", function () {
-
-
-
                 for (var item in SITEMAP) {
-                    var x = SITEMAP[item];
                     for (var prop in ProperyList) {
-                        PropertyDefinedTest1(SITEMAP,item, ProperyList[prop]);
+                        PropertyDefinedTest(item, ProperyList[prop]);
                     }
                 }
-
-
             });
-            /*
-             describe("All items have required properties defined", function () {
-     
-                 beforeEach(function () {
-                     this.SitemapRoot = this.Sitemap.Root;
-                 });
-     
-                 function PropertyDefinedTest(objName, property) {
-                     it("- '" + objName + '.' + property + "' is defined", function () {
-                         expect(this.Sitemap[objName][property]).toBeDefined();
-                     });
-                 }
-     
-                 describe('Something', function () {
-                     it("something1", function () {
-                        
-                         for (var item in this.Sitemap) {
-                             var x = this.Sitemap[item];
-                             for (var prop in ProperyList) {
-                                 PropertyDefinedTest(item, ProperyList[prop]);
-                             }
-                         }
-                     });
-     
-                 });
-     
-                 
-                 
-             });
-             */
+
+            it("All ids are valid", function () {
+                for (var item in SITEMAP) {
+                    IdValidityTest(SITEMAP[item], item);
+                }
+            });
+
+            it("All ids are unique", function () {
+                for (var item in SITEMAP) {
+                    IdUniquenessTest(SITEMAP[item], item);
+                }
+            });
+
+            it("All items have valid parents", function () {
+                for (var item in SITEMAP) {
+                    ParentValidityTest(SITEMAP[item], item);
+                }
+            });
 
             it("Has Valid parent-child relationship defined on Sitemap", function () {
-                //alert(SitemapObj["TechNews"].id);
-                expect(SITEMAP.Root.id).toBe("home");
+                ParentChildTest(SITEMAP.Root);                
             });
 
         });
